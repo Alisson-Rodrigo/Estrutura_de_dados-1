@@ -2,7 +2,7 @@
 #include <ctype.h>
 
 int main() {
-    char frase[] = "Esta e uma frase de exemplo.";
+    char frase[] = "O EXERCICIO E FACIL";
     int contador[26] = {0}; 
 
     for (int i = 0; frase[i] != '\0'; i++) {
@@ -13,7 +13,7 @@ int main() {
         }
     }
 
-    for (int i = 0; i < 26; i++) {
+    for (int i = 0; i < 28; i++) {
         if (contador[i] > 0) {
             printf("%c: %d\n", 'a' + i, contador[i]);
         }
