@@ -11,9 +11,22 @@ int main () {
     }
 
     for (i=0;i<a;i++) {
-        printf ("%d\n", &p[i]);
+        printf ("%d\n", p[i]);
 
     }
+    printf ("Acabou\n");
+
+    p = (int *)realloc(p,sizeof(int) * 30);
+
+    for (i;i<40;i++) {
+        p[i] = i * i;
+    }
+
+    for (i=0;i<40;i++) {
+        printf ("%d\n",p[i]);
+    }
+
+
 
 
 
