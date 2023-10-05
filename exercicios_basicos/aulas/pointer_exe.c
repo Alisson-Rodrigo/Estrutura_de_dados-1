@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+/*
 int main () {
     int a, b, *p1, *p2;
 
@@ -15,7 +16,16 @@ int main () {
     printf ("%d %d\n", *p1, *p2);
     printf ("%d %d\n", a, b);
 
- 
+
+    return 0;
+}
+*/
+
+
+int main () {
+
+    
+
 
 
     return 0;
