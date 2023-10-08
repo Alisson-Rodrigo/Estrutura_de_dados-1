@@ -8,10 +8,9 @@ int main() {
     printf("Digite o tamanho da mensagem: ");
     scanf("%d", &tamanho);
 
-    // Limpa o buffer de entrada
     while (getchar() != '\n');
 
-    mensagem = (char *)malloc((tamanho + 1) * sizeof(char)); // +1 para o caractere nulo
+    mensagem = (char *)malloc((tamanho + 1) * sizeof(char)); 
 
     if (mensagem == NULL) {
         printf("Erro na alocação\n");
@@ -19,11 +18,11 @@ int main() {
     }
 
     printf("Digite a mensagem: ");
-    fgets(mensagem, tamanho + 1, stdin); // Lê a mensagem, incluindo o caractere de nova linha
+    fgets(mensagem, tamanho + 1, stdin); 
 
-    printf("Você digitou: %s", mensagem); // Imprime a mensagem como uma string
+    printf("Você digitou: %s", mensagem); 
 
-    free(mensagem); // Libera a memória alocada
+    free(mensagem); 
 
     return 0;
 }
