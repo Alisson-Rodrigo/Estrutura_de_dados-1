@@ -20,7 +20,7 @@ int main() {
     printf("Digite a mensagem: ");
     fgets(mensagem, tamanho + 1, stdin); 
 
-    printf("Você digitou: %s", mensagem); 
+    printf("Voce digitou: %s", mensagem); 
 
     free(mensagem); 
 
