@@ -5,6 +5,7 @@
 char* subtrai(const char* s1, const char* s2) {
     int tamanhoS1 = strlen(s1);
     int tamanhoS2 = strlen(s2);
+    int i,k;
 
     char* resultado = (char*)malloc((tamanhoS1 + 1) * sizeof(char));
     if (resultado == NULL) {
@@ -14,10 +15,10 @@ char* subtrai(const char* s1, const char* s2) {
 
     int j = 0; 
 
-    for (int i = 0; i < tamanhoS1; i++) {
+    for (i = 0; i < tamanhoS1; i++) {
         int encontrado = 0;
 
-        for (int k = 0; k < tamanhoS2; k++) {
+        for (k = 0; k < tamanhoS2; k++) {
             if (s1[i] == s2[k]) {
                 encontrado = 1;
                 break;
@@ -43,6 +44,6 @@ int main() {
     printf("Resultado: %s\n", resultado);
 
     free(resultado);
-
+ 
     return 0;
 }
