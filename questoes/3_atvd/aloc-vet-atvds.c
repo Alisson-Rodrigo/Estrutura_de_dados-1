@@ -3,11 +3,13 @@
 
 int main () {
 
-    int *vet,n,soma=0,maior,menor,*vet2;
+    int *vet,n,soma=0,maior,menor;
+    float *vet2;
     int x=0;
     int contador=0;
     int i;
 
+    printf ("Digite o tamanho do vetor: ");
     scanf ("%d",&n);
 
     vet = (int *) malloc (n * sizeof(int));
@@ -40,14 +42,14 @@ int main () {
     printf ("Maior: %d\n",maior);
     printf ("Menor: %d\n",menor);
 
-    vet2 = (int *) malloc (n * sizeof(int));
+    vet2 = (float *) malloc (n * sizeof(float));
 
     for (i=0;i<n;i++) {
-        vet2[i] = (vet[i] - menor) / (maior - menor);
+        vet2[i] = (float)(vet[i] - menor) / (maior - menor);
     }
 
     for (i=0;i<n;i++) {
-        printf ("%d\n", vet2[i]);
+        printf ("%d: = %.2f\n",vet[i],vet2[i]);
     }
 
 }
