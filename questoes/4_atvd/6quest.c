@@ -7,13 +7,14 @@ Escreva uma função que faça a procura sequencial de um valor passado por par�
 
 int buscador (int *k, int p, int c) {
     
-    if (k = NULL || p == 0 || c == 0) {
+    if (k == NULL || p == 0 || c == 0) {
         return 0;
     }
 
     if (k[c] == p) {
         return c;
     }
+
     
     return buscador (k, p, c - 1);
 }
@@ -39,9 +40,15 @@ int main () {
     scanf ("%d", &busca);
 
     resultado = buscador(k,busca,cont);
-    printf ("O valor %d foi encontrado na posicao %d do vetor.", busca, resultado);
     
+    if (resultado != 0) { 
+        printf ("O valor %d foi encontrado na posicao %d do vetor.", busca, resultado);
+    }
+    else {
+        printf ("O valor %d nao foi encontrado no vetor.", busca);
+    }
 
-
+    free (k);
+    
     return 0;
 }

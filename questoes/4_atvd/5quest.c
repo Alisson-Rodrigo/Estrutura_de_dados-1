@@ -8,7 +8,7 @@ int juros_compostos (double v, int m, double taxa) {
     }
     double calculo = v * (taxa / 100.0);
     v += calculo;
-    return juros_compostos (v, m -1, taxa); 
+    return juros_compostos (v, m - 1, taxa); 
 }
 int main () {
     double valor, taxa, resultado;
