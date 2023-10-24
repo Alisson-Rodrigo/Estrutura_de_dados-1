@@ -5,20 +5,16 @@ Escreva uma função recursiva que calcule a soma de todos os números compreend
 #include <stdio.h>
 
 int contador (int k, int p) {
-    if (k < 0) {
-        return 0;
+    if ( k == p ) {
+        return k;
     }
 
-    if ( p > k ) {
-        return 0;
-    }
-
-    if ( k > p ) {
-        return k + contador(k - 1, p );
-    }
+    if (k < p) 
+        return k + contador(k + 1, p );
+    if (k > p)
+        return k + contador(k - 1, p);    
 }
 
-int contador(int k, int p);
 int main () {
     int v1, v2, resultado;
 
