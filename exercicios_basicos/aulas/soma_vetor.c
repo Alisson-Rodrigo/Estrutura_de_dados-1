@@ -9,7 +9,7 @@ int soma(int *a, int b) {
 }
 
 int main() {
-    int vetor[] = {1, 2, 3, 4, 5};
+    int vetor[] = {1, 2, 3, 4, 5s};
     int resultado = soma(vetor, 5);
     printf("Soma: %d\n", resultado);
     return 0;
