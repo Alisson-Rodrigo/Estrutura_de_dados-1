@@ -38,8 +38,6 @@ void atribuir(Matriz *m, int linhas, int colunas, float valor){
 
     int k = linhas *  colunas;
     m->v[k] = valor;
-    
-
 
 }
-    
+
