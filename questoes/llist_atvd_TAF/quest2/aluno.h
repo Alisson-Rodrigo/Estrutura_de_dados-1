@@ -1,6 +1,6 @@
 typedef struct  aluno
 {
-    char nome´[50];
+    char nome[50];
     int matricula;
     float nota1;
     float nota2;
@@ -10,4 +10,7 @@ typedef struct  aluno
 
 Aluno atribuir (char nome[50], int matricula, float nota1, float nota2, float nota3);
 void imprimir (Aluno aluno);
-float media (Aluno aluno);
+float media (Aluno aluno, float nota1, float nota2, float nota3);
+bool aprovação(float media);
+void liberar (Aluno aluno);
+
