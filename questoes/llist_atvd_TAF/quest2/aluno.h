@@ -8,7 +8,7 @@ typedef struct  aluno
 
 }Aluno;
 
-Aluno atribuir (char nome[50], int matricula, float nota1, float nota2, float nota3);
+Aluno atribuir ();
 void imprimir (Aluno aluno);
 float media (Aluno aluno, float nota1, float nota2, float nota3);
 bool aprovação(float media);

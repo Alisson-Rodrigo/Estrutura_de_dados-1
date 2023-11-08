@@ -3,14 +3,15 @@
 #include <stdlib.h>
 
 Aluno atribuir () {
-    Aluno *a = (Aluno*) malloc (sizeof(Aluno));
+    Aluno *aln = (Aluno*) malloc (sizeof(Aluno));
 
-    if (a == NULL) {
+    if (aln == NULL) {
         return NULL;
     }
 
-    printf ("Digite o nome do aluno: ")
-    scanf
+    printf ("Digite o nome do aluno: ");
+    scanf ("%s", &aln->nome);
+
 
 
 
