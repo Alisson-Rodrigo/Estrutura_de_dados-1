@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Aluno atribuir (int QtdAluno) {
+Aluno *atribuir (int QtdAluno) {
     Aluno *aln = (Aluno*) malloc ( QtdAluno * sizeof(Aluno));
     int i;
 
@@ -19,7 +19,7 @@ Aluno atribuir (int QtdAluno) {
         scanf ("%f", &aln[i].nota3);
     }
 
-    return *aln;
+    return aln;
 }
 
 void imprimir(Aluno *aluno, int QtdAluno) {
@@ -51,5 +51,12 @@ void aprovacao (float media) {
     if (media <= 6) {
         printf ("O aluno foi reprovado");
     }
+    else {
+        printf ("Ele foi aprovado");
+    }
 
+}
+
+void liberar (Aluno *aluno) {
+    free (aluno);
 }

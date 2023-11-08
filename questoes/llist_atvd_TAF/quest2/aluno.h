@@ -8,9 +8,9 @@ typedef struct
 
 }Aluno;
 
-Aluno atribuir (int QtdAluno);
-void imprimir (Aluno *aluno);
+Aluno *atribuir (int QtdAluno);
+void imprimir (Aluno *aluno, int QtdALunos);
 float media (Aluno *aluno, int matricula, int QtdAluno);
-void aprovação(float media);
+void aprovacao(float media);
 void liberar (Aluno *aluno);
 
