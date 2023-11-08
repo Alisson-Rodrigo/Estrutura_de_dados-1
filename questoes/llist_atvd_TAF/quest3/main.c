@@ -16,6 +16,11 @@ int main() {
     }
 
     imprimir(livros, QtdLivros);
+    
+
+    adicionar_palavra_chave(livros, "alisson", QtdLivros);
+
+    imprimir(livros, QtdLivros);
 
 
     return 0;

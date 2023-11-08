@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+typedef struct jogador
+{
+    char nome[50];
+    int jogos;
+    int gols;
+    int assistencias;
+};
+
 Jogador* atribuir (int Qtdjogador) {
     int i;
     Jogador *j =(Jogador*) malloc(Qtdjogador * sizeof(Jogador));

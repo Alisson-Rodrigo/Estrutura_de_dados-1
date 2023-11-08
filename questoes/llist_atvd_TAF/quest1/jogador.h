@@ -1,10 +1,4 @@
-typedef struct jogador
-{
-    char nome[50];
-    int jogos;
-    int gols;
-    int assistencias;
-}Jogador;
+typedef struct jogador Jogador;
 
 
 

@@ -2,6 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct aluno
+{
+    char nome[50];
+    int matricula;
+    float nota1;
+    float nota2;
+    float nota3;
+
+};
+
 Aluno *atribuir (int QtdAluno) {
     Aluno *aln = (Aluno*) malloc ( QtdAluno * sizeof(Aluno));
     int i;

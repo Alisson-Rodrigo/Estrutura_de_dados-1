@@ -1,12 +1,7 @@
-typedef struct  
-{
-    char autor[50];
-    char titulo[50];
-    int ano_publicacao;
-    char *chaves;
+typedef struct  palavrachave Palavrachave;
+typedef struct livros Livros;
 
-
-}Livros;
 
 Livros *atribuir ();
 void imprimir (Livros *livros, int QtdLivros);
+void adicionar_palavra_chave (Livros *livros, char titulo, int Qtdlivros);

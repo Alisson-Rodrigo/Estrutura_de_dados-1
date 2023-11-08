@@ -1,12 +1,4 @@
-typedef struct 
-{
-    char nome[50];
-    int matricula;
-    float nota1;
-    float nota2;
-    float nota3;
-
-}Aluno;
+typedef struct aluno Aluno;
 
 Aluno *atribuir (int QtdAluno);
 void imprimir (Aluno *aluno, int QtdALunos);
