@@ -1,4 +1,4 @@
-#include "livros.h"
+#include "livros.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,9 +9,6 @@ int main() {
     char palavra_chave[100];
     char autor[50];
     char palavra_chave_remover[100];
-
-
-
 
     Livros *livros = NULL;
 
