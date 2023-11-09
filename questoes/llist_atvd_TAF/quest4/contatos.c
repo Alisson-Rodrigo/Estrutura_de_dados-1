@@ -66,3 +66,41 @@ void imprimir (Contato *contato, int QtdContatos) {
         printf ("\n");
     }
 }
+
+void adicionar_etiqueta (Contato *contato, int QtdContatos, int numero) {
+    int i,j,aux_etq;
+    for (i=0;i<QtdContatos;i++) {
+        if (numero == contato[i].numero) {
+            printf ("Digite quantas etiquetas deseja cadastrar: ");
+            scanf ("%d", &aux_etq);
+            contato[i].etq = (Etiqueta*) realloc (contato[i].etq, aux_etq * sizeof(Etiqueta));
+            if (!contato[i].etq) {
+                printf ("Erro na alocacao");
+                exit (1);
+            }
+            contato->QtdEtiquetas += aux_etq;
+            for (j = contato[i].QtdEtiquetas - aux_etq;j<contato[i].QtdEtiquetas;j++) {
+                printf ("Digite a etiqueta: ");
+                scanf ("%s", contato[i].etq[j].palavra);
+            }
+        }
+    }
+}
+
+void buscar_contatos (Contato *contato, char *etiqueta, int QtdContatos) {
+    int i, j, flag=0;
+    for (i=0;i<QtdContatos;i++) {
+        for (j=0;j<contato[i].QtdEtiquetas;j++) {
+            if (strcmp(etiqueta, contato[i].etq[j].palavra) == 0) {
+                printf ("A etiqueta %s foi encontrada no contato %s!", etiqueta, contato[i].nome);
+                flag = 1;
+            }
+        }
+    }
+    if (flag == 0) {
+        printf ("Nada foi encontrado");
+    }
+}
+
+
+
