@@ -32,10 +32,17 @@ int main() {
     
     //buscar_palavras_chave(livros, palavra_chave, QtdLivros);
 
-    printf ("Digite o nome do autor: ");
-    scanf ("%s", autor);
+    //printf ("Digite o nome do autor: ");
+    //scanf ("%s", autor);
 
-    imprimir_livros_autor(livros, autor, QtdLivros);
+    //imprimir_livros_autor(livros, autor, QtdLivros);
+
+    printf ("Digite uma palavra chave");
+    scanf ("%s", palavra_chave);
+
+    remover_palavra_chave(livros, palavra_chave, QtdLivros);
+
+    imprimir (livros, QtdLivros);
 
     return 0;
 }

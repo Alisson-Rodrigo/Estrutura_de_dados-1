@@ -116,13 +116,27 @@ void imprimir_livros_autor (Livros *livros, char *autor, int QtdLivros) {
 }
 
 void remover_palavra_chave(Livros *livros, char *palavra_chave, int QtdLivros) {
-    int i, j;
-    for (i=0;i<QtdLivros;i++) {
-        for (j=0;j<livros->QtdChaves;j++) {
-
+    int i, j,k;
+    for (i = 0; i < QtdLivros; i++) {
+        for (j = 0; j < livros[i].QtdChaves; j++) {
+            if (strcmp(palavra_chave, livros[i].chaves[j].palavra) == 0) {
+                free(livros[i].chaves[j].palavra);
+                for (k = j; k < livros[i].QtdChaves - 1; k++) {
+                    livros[i].chaves[k] = livros[i].chaves[k + 1];
+                }
+                livros[i].QtdChaves--;
+            }
         }
     }
+    if (livros[i].QtdChaves > 0) {
+        livros[i].chaves = (Palavrachave *)realloc(livros[i].chaves, livros[i].QtdChaves * sizeof(Palavrachave));
+    } else {
+        free(livros[i].chaves);
+        livros[i].chaves = NULL;
+    }
 }
+
+
 
 void liberar (Livros *livros) {
     free (livros);
