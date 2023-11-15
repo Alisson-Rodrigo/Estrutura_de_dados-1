@@ -78,7 +78,7 @@ void adicionar_etiqueta (Contato *contato, int QtdContatos, int numero) {
                 printf ("Erro na alocacao");
                 exit (1);
             }
-            contato.QtdEtiquetas += aux_etq;
+            contato[i].QtdEtiquetas += aux_etq;
             for (j = contato[i].QtdEtiquetas - aux_etq;j<contato[i].QtdEtiquetas;j++) {
                 printf ("Digite a etiqueta: ");
                 scanf ("%s", contato[i].etq[j].palavra);
@@ -105,7 +105,6 @@ void buscar_contatos (Contato *contato, char *etiqueta, int QtdContatos) {
 
 void remover_contato(Contato *contato, int QtdContatos, char *nome) {
     int i,j;
-
     for (i = 0; i < QtdContatos; i++) {
         if (strcmp(nome, contato[i].nome) == 0) {
             free (contato[i].nome);
@@ -117,11 +116,8 @@ void remover_contato(Contato *contato, int QtdContatos, char *nome) {
             for (j = i; j < QtdContatos - 1; j++) {
                 contato[j] = contato[j + 1];
             }
-
             QtdContatos -= 1;
-
             contato = (Contato*) realloc (contato, QtdContatos * sizeof(Contato));
-
             if (!contato) {
                 printf ("Erro na alocacao");
                 exit(1);
@@ -129,6 +125,11 @@ void remover_contato(Contato *contato, int QtdContatos, char *nome) {
         }
     }
 }
+
+void Listar_contatos (Contato *contado, int QtdContatos) {
+    
+}
+
 
 
 
