@@ -28,37 +28,30 @@ int main() {
                 contatos = atribuir(contatos , numContatos, QtdContatos);
                 QtdContatos += numContatos;
                 break;
-
             case 2:
                 imprimir(contatos, QtdContatos);
                 break;
-
             case 3:
                 printf("Digite o número do contato para adicionar etiquetas: ");
                 int numeroContato;
                 scanf("%d", &numeroContato);
                 adicionar_etiqueta(contatos, QtdContatos, numeroContato);
                 break;
-
             case 4:
                 printf("Digite a etiqueta a ser buscada: ");
                 char etiquetaBusca[100];
                 scanf("%s", etiquetaBusca);
                 buscar_contatos(contatos, etiquetaBusca, QtdContatos);
                 break;
-
             case 5:
                 QtdContatos = remover_contato(contatos, QtdContatos);
                 break;
-
             case 6:
                 Listar_contatos(contatos, QtdContatos);
                 break;
-
             case 7:
                 atualizar_numero(contatos, QtdContatos);
                 break;
-
             case 8:
                 liberar(contatos);
                 printf("Programa encerrado.\n");

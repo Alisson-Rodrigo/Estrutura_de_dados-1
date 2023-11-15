@@ -2,7 +2,7 @@ typedef struct  palavrachave Palavrachave;
 typedef struct livros Livros;
 
 
-Livros *atribuir ();
+Livros *atribuir (Livros *l,int QtdLivros, int numLivros);
 void imprimir (Livros *livros, int QtdLivros);
 void adicionar_palavra_chave (Livros *livros, char *titulo, int Qtdlivros);
 void buscar_palavras_chave (Livros *livros, char *palavra_chave, int QtdLivros);

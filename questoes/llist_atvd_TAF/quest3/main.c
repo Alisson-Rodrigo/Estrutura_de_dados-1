@@ -1,62 +1,76 @@
-#include "livros.c"
+#include "livros.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int main() {
-    int QtdLivros, opcao;
-    char titulo[50];
-    char palavra_chave[100];
-    char autor[50];
-    char palavra_chave_remover[100];
-
     Livros *livros = NULL;
+    int QtdLivros = 0, opcao;
+    char titulo[50], palavra_chave[100], autor[50];
 
-    printf("Quantos livros deseja cadastrar? ");
+    printf("Quantidade inicial de livros: ");
     scanf("%d", &QtdLivros);
-    livros = atribuir(QtdLivros);
+
+    livros = atribuir(livros, 0, QtdLivros);
 
     do {
-        printf("\nMenu de Acessos:\n");
-        printf("1. Imprimir informações dos livros\n");
-        printf("2. Adicionar palavras-chave a um livro\n");
-        printf("3. Buscar livros por palavra-chave\n");
-        printf("4. Imprimir livros de um autor\n");
-        printf("5. Remover palavra-chave de um livro\n");
-        printf("6. Sair\n");
-        printf("Escolha uma opção: ");
+        printf("\n1 - Adicionar livro\n");
+        printf("2 - Adicionar palavra-chave\n");
+        printf("3 - Buscar palavra-chave\n");
+        printf("4 - Imprimir livros por autor\n");
+        printf("5 - Remover palavra-chave\n");
+        printf("6 - Imprimir todos os livros\n");
+        printf("0 - Sair\n");
+        printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
             case 1:
-                imprimir(livros, QtdLivros);
+                printf("\nAdicionar livro:\n");
+                livros = atribuir(livros, QtdLivros, 1);
+                QtdLivros++;
                 break;
+
             case 2:
-                printf("Digite o título do livro: ");
+                printf("\nAdicionar palavra-chave:\n");
+                printf("Digite o titulo do livro: ");
                 scanf("%s", titulo);
                 adicionar_palavra_chave(livros, titulo, QtdLivros);
                 break;
+
             case 3:
-                printf("Digite a palavra-chave que deseja buscar: ");
+                printf("\nBuscar palavra-chave:\n");
+                printf("Digite a palavra-chave: ");
                 scanf("%s", palavra_chave);
                 buscar_palavras_chave(livros, palavra_chave, QtdLivros);
                 break;
+
             case 4:
+                printf("\nImprimir livros por autor:\n");
                 printf("Digite o nome do autor: ");
                 scanf("%s", autor);
                 imprimir_livros_autor(livros, autor, QtdLivros);
                 break;
+
             case 5:
-                printf("Digite a palavra-chave que deseja remover: ");
-                scanf("%s", palavra_chave_remover);
-                remover_palavra_chave(livros, palavra_chave_remover, QtdLivros);
+                printf("\nRemover palavra-chave:\n");
+                printf("Digite a palavra-chave: ");
+                scanf("%s", palavra_chave);
+                remover_palavra_chave(livros, palavra_chave, QtdLivros);
                 break;
+
             case 6:
+                printf("\nImprimir todos os livros:\n");
+                imprimir(livros, QtdLivros);
                 break;
+
+            case 0:
+                break;
+
             default:
-                printf("Opção inválida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
         }
-    } while (opcao != 6);
+
+    } while (opcao != 0);
 
     liberar(livros);
 

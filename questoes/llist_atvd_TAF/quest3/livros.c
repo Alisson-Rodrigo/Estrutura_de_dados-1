@@ -4,10 +4,9 @@
 
 struct  palavrachave
 {
-    char *palavra[100];
+    char palavra[100];
 
 };
-
 
 struct livros
 {
@@ -19,11 +18,11 @@ struct livros
 };
 
 
-Livros *atribuir (int QtdLivros) {
+Livros *atribuir (Livros *l,int QtdLivros, int numLivros) {
     int i, qtdChaves, j;
-    Livros *l = (Livros*) malloc (QtdLivros * sizeof(Livros));
+    l = (Livros*) realloc (l, numLivros * sizeof(Livros));
 
-    for (i=0;i<QtdLivros;i++)
+    for (i=QtdLivros;i<QtdLivros+numLivros;i++)
     {
         printf ("Qual o titulo do livro: ");
         scanf ("%s", l[i].titulo);
