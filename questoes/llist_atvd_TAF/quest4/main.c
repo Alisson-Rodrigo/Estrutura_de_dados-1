@@ -25,7 +25,7 @@ int main() {
                 printf("Quantos contatos deseja adicionar? ");
                 int numContatos;
                 scanf("%d", &numContatos);
-                contatos = atribuir(QtdContatos + numContatos);
+                contatos = atribuir(contatos , numContatos, QtdContatos);
                 QtdContatos += numContatos;
                 break;
 

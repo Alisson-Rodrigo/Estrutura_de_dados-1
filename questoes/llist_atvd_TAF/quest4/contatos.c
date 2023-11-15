@@ -17,18 +17,19 @@ struct contato
     int QtdEtiquetas;
 };
 
-Contato *atribuir (int QtdContatos) {
+Contato *atribuir (Contato *c ,int numerosContatos,int QtdContatos) {
     int i,j,QtdEtiquetas;
-    Contato *c = (Contato*) malloc (QtdContatos * sizeof(Contato));
+    c = (Contato*) realloc (c, numerosContatos * sizeof(Contato));
     if (!c) {
         printf ("Erro na alocacao");
         exit(1);
     }
-    for (i=0;i<QtdContatos;i++) {
+
+    for (i=QtdContatos;i<QtdContatos+numerosContatos;i++) {
         printf ("Digite o nome do contato: ");
-        scanf ("%s", c->nome);
+        scanf ("%s", c[i].nome);
         printf ("Digite o numero do contato: ");
-        scanf ("%d", &c->numero);
+        scanf ("%d", &c[i].numero);
         printf ("Quantas etiquetas deseja adicionar? ");
         scanf ("%d", &QtdEtiquetas);
         c[i].QtdEtiquetas = QtdEtiquetas;
