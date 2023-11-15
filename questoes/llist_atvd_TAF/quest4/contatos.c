@@ -102,22 +102,25 @@ void buscar_contatos (Contato *contato, char *etiqueta, int QtdContatos) {
     }
 }
 
-/*
 void remover_contato(Contato *contato, int QtdContatos, char *nome) {
     int i,j;
     for (i = 0; i < QtdContatos; i++) {
         if (strcmp(nome, contato[i].nome) == 0) {
             free (contato[i].nome);
+            free(contato[i].numero);
+            
             for (j=0;j<contato[i].QtdEtiquetas;j++) {
                 free(contato[i].etq[j].palavra);
             }
+
             free (contato[i].etq);
-            
             for (j = i; j < QtdContatos - 1; j++) {
                 contato[j] = contato[j + 1];
             }
+
             QtdContatos -= 1;
             contato = (Contato*) realloc (contato, QtdContatos * sizeof(Contato));
+
             if (!contato) {
                 printf ("Erro na alocacao");
                 exit(1);
@@ -125,10 +128,9 @@ void remover_contato(Contato *contato, int QtdContatos, char *nome) {
         }
     }
 }
-*/
 
 void Listar_contatos (Contato *contato, int QtdContatos) {
-    int i,j;
+    int i;
 
     printf ("----Contatos----");
     for (i=0;i<QtdContatos;i++) {
@@ -155,7 +157,9 @@ void atualizar_numero (Contato *contato, int QtdNumeros) {
     }
 }
 
-
+void liberar (Contato *contato) {
+    free (contato);
+}
 
 
 

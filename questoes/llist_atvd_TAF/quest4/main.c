@@ -1,28 +1,32 @@
 #include "contatos.c"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int main() {
+    int opcao, QtdContatos = 0;
     Contato *contatos = NULL;
-    int QtdContatos = 0;
-    int opcao;
 
     do {
-        printf("\n----------- Menu -----------\n");
-        printf("1. Atribuir contatos\n");
-        printf("2. Imprimir contatos\n");
-        printf("3. Adicionar etiqueta\n");
-        printf("4. Buscar contatos por etiqueta\n");
-        printf("5. Remover contato\n");
-        printf("0. Sair\n");
+        printf("\n-------- Menu --------\n");
+        printf("1. Adicionar Contato\n");
+        printf("2. Listar Contatos\n");
+        printf("3. Adicionar Etiqueta\n");
+        printf("4. Buscar Contatos por Etiqueta\n");
+        printf("5. Remover Contato\n");
+        printf("6. Listar Nomes de Contatos\n");
+        printf("7. Atualizar Número\n");
+        printf("8. Sair\n");
+        printf("----------------------\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
             case 1:
-                printf("Digite a quantidade de contatos: ");
-                scanf("%d", &QtdContatos);
-                contatos = atribuir(QtdContatos);
+                printf("Quantos contatos deseja adicionar? ");
+                int numContatos;
+                scanf("%d", &numContatos);
+                contatos = atribuir(QtdContatos + numContatos);
+                QtdContatos += numContatos;
                 break;
 
             case 2:
@@ -30,44 +34,44 @@ int main() {
                 break;
 
             case 3:
-                if (QtdContatos > 0) {
-                    int numero;
-                    printf("Digite o numero do contato: ");
-                    scanf("%d", &numero);
-                    adicionar_etiqueta(contatos, QtdContatos, numero);
-                } else {
-                    printf("Nenhum contato atribuido. Atribua contatos primeiro.\n");
-                }
+                printf("Digite o número do contato para adicionar etiquetas: ");
+                int numeroContato;
+                scanf("%d", &numeroContato);
+                adicionar_etiqueta(contatos, QtdContatos, numeroContato);
                 break;
 
             case 4:
-                if (QtdContatos > 0) {
-                    char etiqueta[100];
-                    printf("Digite a etiqueta a ser buscada: ");
-                    scanf("%s", etiqueta);
-                    buscar_contatos(contatos, etiqueta, QtdContatos);
-                } else {
-                    printf("Nenhum contato atribuido. Atribua contatos primeiro.\n");
-                }
+                printf("Digite a etiqueta a ser buscada: ");
+                char etiquetaBusca[100];
+                scanf("%s", etiquetaBusca);
+                buscar_contatos(contatos, etiquetaBusca, QtdContatos);
                 break;
 
             case 5:
-                if (QtdContatos > 0) {
-                    char nome[50];
-                    printf("Digite o nome do contato a ser removido: ");
-                    scanf("%s", nome);
-                    remover_contato(contatos, &QtdContatos, nome);
+                printf("Digite o nome do contato a ser removido: ");
+                char nomeRemover[50];
+                scanf("%s", nomeRemover);
+                remover_contato(contatos, &QtdContatos, nomeRemover);
+                break;
 
-                } else {
-                    printf("Nenhum contato atribuido. Atribua contatos primeiro.\n");
-                }
+            case 6:
+                Listar_contatos(contatos, QtdContatos);
+                break;
+
+            case 7:
+                atualizar_numero(contatos, QtdContatos);
+                break;
+
+            case 8:
+                liberar(contatos);
+                printf("Programa encerrado.\n");
                 break;
 
             default:
                 printf("Opcao invalida. Tente novamente.\n");
         }
 
-    } while (opcao != 0);
+    } while (opcao != 8);
 
     return 0;
 }
