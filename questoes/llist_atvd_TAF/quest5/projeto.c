@@ -21,4 +21,6 @@ struct tarefas
 };
 
 
-Projeto *atribuir (int);
+Projeto *atribuir () {
+
+}
