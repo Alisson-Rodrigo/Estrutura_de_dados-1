@@ -12,20 +12,20 @@ typedef struct aluno
 
 };
 
-Aluno *atribuir (int QtdAluno) {
-    Aluno *aln = (Aluno*) malloc ( QtdAluno * sizeof(Aluno));
+Aluno *atribuir (Aluno *aln, int numAlunos, int QtdAluno) {
+    aln = (Aluno*) realloc (aln, numAlunos * sizeof(Aluno));
     int i;
 
-    for (i=0;i<QtdAluno;i++) {
+    for (i=QtdAluno;i<QtdAluno+numAlunos;i++) {
         printf ("Digite o nome do aluno: ");
         scanf ("%s", aln[i].nome);
-        printf ("Qual a sua matricula");
+        printf ("Qual a sua matricula: ");
         scanf ("%d", &aln[i].matricula);
-        printf("Digite a sua primeira nota");
+        printf("Digite a sua primeira nota: ");
         scanf ("%f", &aln[i].nota1);
-        printf ("Digite sua segunda nota");
+        printf ("Digite sua segunda nota: ");
         scanf ("%f", &aln[i].nota2);
-        printf ("Digite sua terceira nota");
+        printf ("Digite sua terceira nota: ");
         scanf ("%f", &aln[i].nota3);
     }
 

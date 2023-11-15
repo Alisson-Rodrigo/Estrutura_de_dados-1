@@ -18,7 +18,7 @@ struct livros
 };
 
 
-Livros *atribuir (Livros *l,int QtdLivros, int numLivros) {
+Livros *atribuir (Livros *l,int numLivros, int QtdLivros) {
     int i, qtdChaves, j;
     l = (Livros*) realloc (l, numLivros * sizeof(Livros));
 
@@ -41,8 +41,6 @@ Livros *atribuir (Livros *l,int QtdLivros, int numLivros) {
             }
         l[i].QtdChaves = j;
         printf ("\n");
-
-
     }
     return l;
 
@@ -104,7 +102,7 @@ void imprimir_livros_autor (Livros *livros, char *autor, int QtdLivros) {
     int i, flag=0;
     for (i=0;i<QtdLivros;i++) {
         if ((strcmp(autor, livros[i].autor) == 0 )) {
-            printf ("Livro: %s", livros[i].titulo);
+            printf ("Livro: %s\n", livros[i].titulo);
             flag = 1;
         }
     }

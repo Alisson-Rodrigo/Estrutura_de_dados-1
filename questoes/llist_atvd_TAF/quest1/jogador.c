@@ -11,15 +11,15 @@ typedef struct jogador
     int assistencias;
 };
 
-Jogador* atribuir (int Qtdjogador) {
+Jogador* atribuir (Jogador *j, int Qtdjogador, int numJogador) {
     int i;
-    Jogador *j =(Jogador*) malloc(Qtdjogador * sizeof(Jogador));
+    j =(Jogador*) realloc(j , numJogador * sizeof(Jogador));
 
     if (j == NULL) {
         return NULL;
     }
 
-    for(i=0 ; i < Qtdjogador ; i++){
+    for(i=Qtdjogador ; i < Qtdjogador + numJogador ; i++){
         printf("Informe o nome do jogador: ");
         scanf("%s",j[i].nome);    
         

@@ -1,19 +1,14 @@
-#include "livros.h"
+#include "livros.c"
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
     Livros *livros = NULL;
-    int QtdLivros = 0, opcao;
+    int QtdLivros = 0, opcao, numlivros;
     char titulo[50], palavra_chave[100], autor[50];
 
-    printf("Quantidade inicial de livros: ");
-    scanf("%d", &QtdLivros);
-
-    livros = atribuir(livros, 0, QtdLivros);
-
     do {
-        printf("\n1 - Adicionar livro\n");
+        printf("1 - Adicionar livro\n");
         printf("2 - Adicionar palavra-chave\n");
         printf("3 - Buscar palavra-chave\n");
         printf("4 - Imprimir livros por autor\n");
@@ -25,9 +20,10 @@ int main() {
 
         switch (opcao) {
             case 1:
-                printf("\nAdicionar livro:\n");
-                livros = atribuir(livros, QtdLivros, 1);
-                QtdLivros++;
+                printf("Quantos livros deseja adicionar: ");
+                scanf("%d", &numlivros);
+                livros = atribuir(livros, numlivros, QtdLivros);
+                QtdLivros += numlivros;
                 break;
 
             case 2:
