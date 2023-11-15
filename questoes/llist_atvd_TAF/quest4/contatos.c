@@ -102,7 +102,7 @@ void buscar_contatos (Contato *contato, char *etiqueta, int QtdContatos) {
     }
 }
 
-
+/*
 void remover_contato(Contato *contato, int QtdContatos, char *nome) {
     int i,j;
     for (i = 0; i < QtdContatos; i++) {
@@ -125,9 +125,34 @@ void remover_contato(Contato *contato, int QtdContatos, char *nome) {
         }
     }
 }
+*/
 
-void Listar_contatos (Contato *contado, int QtdContatos) {
-    
+void Listar_contatos (Contato *contato, int QtdContatos) {
+    int i,j;
+
+    printf ("----Contatos----");
+    for (i=0;i<QtdContatos;i++) {
+        printf ("Nome: %s\n", contato[i].nome);
+    }
+}
+
+void atualizar_numero (Contato *contato, int QtdNumeros) {
+    int i, numero, flag=0;
+    printf ("Qual número deseja atualizar? ");
+    scanf ("%d", &numero);
+
+    for (i=0;i<QtdNumeros;i++) {
+        if (numero == contato[i].numero) {
+            printf ("Digite o novo numero: ");
+            scanf ("%d", &contato[i].numero);
+            printf ("Numero atualizado");
+            flag = 1;
+        }
+    }
+
+    if (flag == 0) {
+        printf ("Numero nao encontrado");
+    }
 }
 
 
