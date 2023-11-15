@@ -48,10 +48,7 @@ int main() {
                 break;
 
             case 5:
-                printf("Digite o nome do contato a ser removido: ");
-                char nomeRemover[50];
-                scanf("%s", nomeRemover);
-                remover_contato(contatos, &QtdContatos, nomeRemover);
+                QtdContatos = remover_contato(contatos, QtdContatos);
                 break;
 
             case 6:
