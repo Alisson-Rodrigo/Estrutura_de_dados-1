@@ -1,12 +1,14 @@
-#include <stdio.h>
+#include "info.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-typedef struct lista
+
+struct lista
 {
     int info;
     struct lista *prox;
 
-}Lista;
+};
 
 Lista*lst_zerar () {
     return NULL;
@@ -57,18 +59,26 @@ Lista* insere_fim(Lista* l, int i) {
     return l;
 }
 
-int main () {
-    Lista *l;
+Lista *insere_ordenado(Lista *l, int i) {
+    Lista *novo = (Lista*)malloc(sizeof(Lista));
+    novo->info = i;
+    novo->prox = NULL;
 
-    l = lst_zerar();
-    l = insere_fim(l,10);
-    l = insere_fim(l,20);
-    imprimir(l);
-    printf ("%d", contar_lista(l));
-        
-    return 0;
+    if (l == NULL || i < l->info) {
+        novo->prox = l;
+        return novo;
+    }
+
+    Lista *ant = NULL;
+    Lista *atual = l;
+
+    while (atual != NULL && i > atual->info) {
+        ant = atual;
+        atual = atual->prox;
+    }
+
+    ant->prox = novo;
+    novo->prox = atual;
+
+    return l;
 }
-
-
-
-
