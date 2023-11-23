@@ -40,9 +40,24 @@ int contar_lista (Lista *l) {
     return tamanho;
 }
 
-Lista *inserir_final (Lista *l) {
-    Lista *novo = (Lista*) malloc (sizeof(Lista));
+Lista* insere_fim(Lista* l, int i) {
+    Lista* novo = (Lista*) malloc(sizeof(Lista));
+    novo->info = i;
+    novo->prox = NULL;
+
+    if (l == NULL) { 
+        return novo;
+    } 
+    else { 
+        Lista* p; 
+        for (p = l; p->prox != NULL; p = p->prox);
+        p->prox = novo; 
+        return l;
+    }
+
+    return l;
 }
+
 
 
 
