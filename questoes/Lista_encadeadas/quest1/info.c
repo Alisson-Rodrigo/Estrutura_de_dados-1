@@ -82,3 +82,7 @@ Lista *insere_ordenado(Lista *l, int i) {
 
     return l;
 }
+
+void liberar(Lista *l) {
+    free(l);
+}
