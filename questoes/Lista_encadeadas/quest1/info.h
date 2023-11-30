@@ -5,7 +5,5 @@ void imprimir(Lista *l);
 int contar_lista(Lista *l);
 Lista *insere_fim(Lista *l, int v);
 void liberar(Lista *l);
-
-Lista* removerElemento(Lista* l, int v);
-Lista* lst_busca (Lista* l, int v);
-int lst_igual (Lista* l1, Lista* l2);
+Lista *remover_elemento(Lista *l, int elemento);
+Lista *buscar_elemento(Lista *l, int elemento);

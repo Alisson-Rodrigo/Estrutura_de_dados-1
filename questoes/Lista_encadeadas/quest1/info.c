@@ -84,5 +84,44 @@ Lista *insere_ordenado(Lista *l, int i) {
 }
 
 void liberar(Lista *l) {
-    free(l);d
+    free(l);
+}
+
+
+Lista *remover_elemento(Lista *l, int elemento) {
+    Lista *ant = NULL;
+    Lista *atual = l;
+
+    while (atual != NULL && atual->info != elemento) {
+        ant = atual;
+        atual = atual->prox;
+    }
+
+    if (atual == NULL) {
+        return l;
+    }
+
+    if (ant == NULL) {
+        l = atual->prox;
+    } else {
+        ant->prox = atual->prox;
+    }
+
+    free(atual);
+
+    return l;
+}
+
+Lista *buscar_elemento(Lista *l, int elemento) {
+    Lista *atual = l;
+
+    while (atual != NULL && atual->info != elemento) {
+        atual = atual->prox;
+    }
+
+    if (atual == NULL) {
+        return NULL;
+    }
+
+    return atual;
 }
