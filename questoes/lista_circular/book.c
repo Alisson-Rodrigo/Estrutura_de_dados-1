@@ -7,7 +7,7 @@ struct book {
     char titulo[50];
     int ano;
     int id;
-    book *next;
+    struct book *next;
 }
 
 Book *zerar_lista() {
@@ -15,6 +15,16 @@ Book *zerar_lista() {
 }
 
 Book *inserir_ordenado_circular (Book *l, char *titulo, char *autor, int ano, int id) {
+    Book *novo = (Book*) malloc (sizeof(Book)); 
+    aux = l;
+    if (l == NULL) {
+        novo->next = novo;
+    }else {
+
+    }
+
+
+    return novo;
 
 }
 
