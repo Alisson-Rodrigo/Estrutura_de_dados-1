@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include "book.h"
 
-
 struct book {
     char autor[50];
     char titulo[50];
     int ano;
     int id;
-    Book *next;
+    book *next;
 }
 
 Book *zerar_lista() {
