@@ -24,7 +24,6 @@ void pilha_push (Pilha* p, float v) {
 	novo->info = v;
 	novo->prox = p->prim;
 	p->prim = novo;
-
 }
 
 void pilha_pop (Pilha* p){
@@ -33,11 +32,9 @@ void pilha_pop (Pilha* p){
 		printf ("A pilha está vazia");
 		exit(1);
 	}
-
 	t = p->prim;
 	p->prim = t->prox;
-	free (t);
-
+	free(t);
 }
 
 int pilha_vazia (Pilha* p){
@@ -52,7 +49,10 @@ void mostrar_pilha(Pilha* p) {
 	No *t;
 	t = p->prim;
 	while (t != NULL) {
-		printf ("Valores: %.2f", t->info);
+		printf ("O valor: %.2f", t->info);
 		t = t->prox;
 	}
+
+	
+
 }
