@@ -12,20 +12,6 @@ struct ordem{
     clock_t fim;
 };
 
-void inicializa(Ordem *v,int tamanho){
-    v->num = (int*)malloc(tamanho * sizeof(int));
-    v->tamanho = tamanho;
-    v->comparacoes = 0;
-    v->trocas = 0;
-}
-
-void preencher_radom(Ordem *v){
-    int i;
-    srand(time(NULL));
-    for (i = 0; i < v->tamanho; i++) {
-        v->num[i] = rand() % 100000;
-    }
-}
 
 void bubble_sort(Ordem *v){
     int i, j;
@@ -89,11 +75,19 @@ void imprimir_estatisticas(Ordem *v, char* nome_algoritmo){
     printf("Trocas: %llu\n", v->trocas); // Modificado para %llu
     printf("Tempo: %f segundos\n\n", temp);
 }
-void imprimir_vetor(Ordem *v) {
-	int i;
-    printf("Vetor:\n");
+
+
+void inicializa(Ordem *v,int tamanho){
+    v->num = (int*)malloc(tamanho * sizeof(int));
+    v->tamanho = tamanho;
+    v->comparacoes = 0;
+    v->trocas = 0;
+}
+
+void preencher_radom(Ordem *v){
+    int i;
+    srand(time(NULL));
     for (i = 0; i < v->tamanho; i++) {
-        printf("%d ", v->num[i]);
+        v->num[i] = rand() % 100000;
     }
-    printf("\n");
 }
