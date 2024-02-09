@@ -14,13 +14,13 @@ struct pilha {
 };
 
 Pilha* pilha_cria (void) {
-    Pilha *topo = (Pilha*) malloc (sizeof(Pilha));
-    topo->prim = NULL;
-    return topo;
+	Pilha* p = (Pilha*) malloc(sizeof(Pilha));
+	p->prim = NULL;
+	return p;
 }
 
 void pilha_push (Pilha* p, float v) {
-	No *novo = (No*) malloc (sizeof(novo));
+	No* novo = (No*) malloc (sizeof(No));
 	novo->info = v;
 	novo->prox = p->prim;
 	p->prim = novo;
@@ -28,9 +28,8 @@ void pilha_push (Pilha* p, float v) {
 
 void pilha_pop (Pilha* p){
 	No* t;
-	float v;
-	if (pilha_vazia(p)) { 
-		printf("Pilha vazia.\n");
+	if (p->prim == NULL) {
+		printf ("A pilha está vazia");
 		exit(1);
 	}
 	t = p->prim;
@@ -39,18 +38,21 @@ void pilha_pop (Pilha* p){
 }
 
 int pilha_vazia (Pilha* p){
-	if (p->prim == NULL)
-		return 1;
-	return 0;
+	if (p->prim == NULL) {
+		return 0;
+	}
+	return 1;
+
 }
 
 void mostrar_pilha(Pilha* p) {
 	No *t;
 	t = p->prim;
 	while (t != NULL) {
-		printf ("%.2f\n", t->info);
+		printf ("O valor: %.2f", t->info);
 		t = t->prox;
 	}
+
 	
-	
+
 }
