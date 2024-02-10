@@ -21,7 +21,7 @@ void preencher_random(Ordenacao *v) {
     int i;
     srand(time(NULL));
     for (i = 0; i < v->tamanho; i++) {
-        v->num[i] = rand() % 1000000;
+        v->num[i] = rand() % 999999;
     }
 }
 
