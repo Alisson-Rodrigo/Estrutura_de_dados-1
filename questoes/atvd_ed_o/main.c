@@ -9,30 +9,30 @@ int main() {
     printf("Digite o tamanho do vetor: ");
     scanf("%d", &tamanho);
 
-    inicializa(&vetor, tamanho);
-    preencher_radom(&vetor);
+    iniciar(&vetor, tamanho);
+    inserir_dados(&vetor);
 
     // Bubble Sort
     bubble_sort(&vetor);
-    imprimir_estatisticas(&vetor, "Bubble Sort");
+    exibir_infos(&vetor, "Bubble Sort");
 
     // Reset vetor
     free(vetor.num);
-    inicializa(&vetor, tamanho);
-    preencher_radom(&vetor);
+    iniciar(&vetor, tamanho);
+    inserir_dados(&vetor);
 
     // Selection Sort
     selection_sort(&vetor);
-    imprimir_estatisticas(&vetor, "Selection Sort");
+    exibir_infos(&vetor, "Selection Sort");
 
     // Reset vetor
     free(vetor.num);
-    inicializa(&vetor, tamanho);
-    preencher_radom(&vetor);
+    iniciar(&vetor, tamanho);
+    inserir_dados(&vetor);
 
     // Insertion Sort
     insertion_sort(&vetor);
-    imprimir_estatisticas(&vetor, "Insertion Sort");
+    exibir_infos(&vetor, "Insertion Sort");
 
 
     free(vetor.num);

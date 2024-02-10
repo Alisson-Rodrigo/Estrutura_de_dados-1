@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "time.h"
 #include "ordenacao.h"
+#include "time.h"
+
 
 struct ordem{
     int *num;
@@ -13,81 +14,80 @@ struct ordem{
 };
 
 
-void bubble_sort(Ordem *v){
+void bubble_sort(Ordem *ordenacao){
     int i, j;
-    v->inicio = clock();
-    for(i = 0; i < v->tamanho-1; i++){
-        for(j = 0; j < v->tamanho-i-1; j++){
-            v->comparacoes++;
-            if(v->num[j] > v->num[j+1]){
-                int temp = v->num[j];
-                v->num[j] = v->num[j+1];
-                v->num[j+1] = temp;
-                v->trocas++;
+    ordenacao->inicio = clock();
+    for(i = 0; i < ordenacao->tamanho-1; i++){
+        for(j = 0; j < ordenacao->tamanho-i-1; j++){
+            ordenacao->comparacoes++;
+            if(ordenacao->num[j] > ordenacao->num[j+1]){
+                int temp = ordenacao->num[j];
+                ordenacao->num[j] = ordenacao->num[j+1];
+                ordenacao->num[j+1] = temp;
+                ordenacao->trocas++;
             }
         }
     }
-    v->fim = clock();
+    ordenacao->fim = clock();
 }
 
-void selection_sort(Ordem *v){
+void selection_sort(Ordem *ordenacao){
     int i, j, min_idx;
-    v->inicio = clock();
-    for(i = 0; i < v->tamanho-1; i++){
+    ordenacao->inicio = clock();
+    for(i = 0; i < ordenacao->tamanho-1; i++){
         min_idx = i;
-        for(j = i+1; j < v->tamanho; j++){
-            v->comparacoes++;
-            if(v->num[j] < v->num[min_idx]){
+        for(j = i+1; j < ordenacao->tamanho; j++){
+            ordenacao->comparacoes++;
+            if(ordenacao->num[j] < ordenacao->num[min_idx]){
                 min_idx = j;
             }
         }
-        int temp = v->num[min_idx];
-        v->num[min_idx] = v->num[i];
-        v->num[i] = temp;
-        v->trocas++;
+        int temp = ordenacao->num[min_idx];
+        ordenacao->num[min_idx] = ordenacao->num[i];
+        ordenacao->num[i] = temp;
+        ordenacao->trocas++;
     }
-    v->fim = clock();
+    ordenacao->fim = clock();
 }
 
-void insertion_sort(Ordem *v){
+void insertion_sort(Ordem *ordenacao){
     int i, key, j;
-    v->inicio = clock();
-    for(i = 1; i < v->tamanho; i++){
-        key = v->num[i];
+    ordenacao->inicio = clock();
+    for(i = 1; i < ordenacao->tamanho; i++){
+        key = ordenacao->num[i];
         j = i - 1;
-        while(j >= 0 && v->num[j] > key){
-            v->num[j+1] = v->num[j];
+        while(j >= 0 && ordenacao->num[j] > key){
+            ordenacao->num[j+1] = ordenacao->num[j];
             j = j - 1;
-            v->trocas++;
-            v->comparacoes++; 
+            ordenacao->trocas++;
+            ordenacao->comparacoes++; 
         }
-        v->num[j+1] = key;
+        ordenacao->num[j+1] = key;
     }
-    v->fim = clock();
+    ordenacao->fim = clock();
 }
 
 
-
-void imprimir_estatisticas(Ordem *v, char* nome_algoritmo){
-    double temp = ((double)(v->fim - v->inicio))/CLOCKS_PER_SEC;
-    printf("%s:\n", nome_algoritmo);
-    printf("Comparacoes: %llu\n", v->comparacoes); // Modificado para %llu
-    printf("Trocas: %llu\n", v->trocas); // Modificado para %llu
-    printf("Tempo: %f segundos\n\n", temp);
+void exibir_infos(Ordem *ordenacao, char* metodo){
+    double t = ((double)(ordenacao->fim - ordenacao->inicio))/CLOCKS_PER_SEC;
+    printf("%s:\n", metodo);
+    printf("Comparacoes: %llu\n", ordenacao->comparacoes); // Modificado para %llu
+    printf("Trocas: %llu\n", ordenacao->trocas); // Modificado para %llu
+    printf("Tempo: %.2f segundos\n\n", t);
 }
 
 
-void inicializa(Ordem *v,int tamanho){
-    v->num = (int*)malloc(tamanho * sizeof(int));
-    v->tamanho = tamanho;
-    v->comparacoes = 0;
-    v->trocas = 0;
+void iniciar(Ordem *ordenacao,int tamanho){
+    ordenacao->num = (int*)malloc(tamanho * sizeof(int));
+    ordenacao->tamanho = tamanho;
+    ordenacao->comparacoes = 0;
+    ordenacao->trocas = 0;
 }
 
-void preencher_radom(Ordem *v){
+void inserir_dados(Ordem *ordenacao){
     int i;
     srand(time(NULL));
-    for (i = 0; i < v->tamanho; i++) {
-        v->num[i] = rand() % 100000;
+    for (i = 0; i < ordenacao->tamanho; i++) {
+        ordenacao->num[i] = rand() % 100000;
     }
 }
