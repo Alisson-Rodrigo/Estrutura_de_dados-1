@@ -5,7 +5,7 @@
 
 int main() {
     Ordenacao dados_quick, dados_merge;
-    int tamanho = 10000000; // Tamanho do vetor
+    int tamanho = 100000; // Tamanho do vetor
 
     inicializa(&dados_quick, tamanho);
     inicializa(&dados_merge, tamanho);

@@ -125,7 +125,7 @@ void mergeSort(Ordenacao *dados, int l, int r) {
 void imprimirTempoETamanhoMemoriaMergeSort(Ordenacao *dados) {
     clock_t inicio = clock(); // Início da contagem de tempo
 
-    // Cálculo da quantidade total de memória utilizada antes da ordenação
+    // Cálculo da quantidade de memória utilizada antes da ordenação
     size_t memoria_antes = dados->tamanho * sizeof(int);
 
     // Chamada da função de ordenação Merge Sort
@@ -136,13 +136,13 @@ void imprimirTempoETamanhoMemoriaMergeSort(Ordenacao *dados) {
     // Cálculo do tempo de execução
     double tempo_execucao = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
 
-    // Cálculo da quantidade total de memória utilizada após a ordenação
+    // Cálculo da quantidade de memória utilizada após a ordenação
     size_t memoria_depois = dados->tamanho * sizeof(int);
 
     // Cálculo da quantidade de memória utilizada durante a ordenação (diferença entre antes e depois)
     size_t memoria_utilizada = memoria_depois - memoria_antes;
 
-    printf("Tempo de execucao: %.6f segundos\n", tempo_execucao);
+    printf("Tempo de execucao: %.3f segundos\n", tempo_execucao);
     printf("Quantidade de memoria utilizada: %zu bytes\n", memoria_utilizada);
 }
 
@@ -158,6 +158,6 @@ void imprimirTempoETamanhoMemoria(Ordenacao *dados) {
     clock_t fim = clock(); // Fim da contagem de tempo
     double tempo_execucao = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
     size_t memoria_utilizada = dados->tamanho * sizeof(int);
-    printf("Tempo de execucao: %.6f segundos\n", tempo_execucao);
+    printf("Tempo de execucao: %.3f segundos\n", tempo_execucao);
     printf("Quantidade de memoria utilizada: %zu bytes\n", memoria_utilizada);
 }
