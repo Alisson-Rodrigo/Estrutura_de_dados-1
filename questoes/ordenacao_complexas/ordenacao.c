@@ -61,6 +61,93 @@ void imprimirArray(int arr[], int tamanho) {
     printf("\n");
 }
 
+// Função para fundir dois subarrays de arr[]
+void merge(int arr[], int l, int m, int r) {
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    // Cria arrays temporários
+    int L[n1], R[n2];
+
+    // Copia os dados para os arrays temporários L[] e R[]
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    // Merge dos arrays temporários de volta em arr[l..r]
+    i = 0;
+    j = 0;
+    k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copia os elementos restantes de L[], se houver
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copia os elementos restantes de R[], se houver
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// Função principal que implementa o Merge Sort
+void mergeSort(Ordenacao *dados, int l, int r) {
+    if (l < r) {
+        // Encontra o ponto médio do array
+        int m = l + (r - l) / 2;
+
+        // Ordena a primeira metade
+        mergeSort(dados, l, m);
+        // Ordena a segunda metade
+        mergeSort(dados, m + 1, r);
+
+        // Merge das metades ordenadas
+        merge(dados->num, l, m, r);
+    }
+}
+
+void imprimirTempoETamanhoMemoriaMergeSort(Ordenacao *dados) {
+    clock_t inicio = clock(); // Início da contagem de tempo
+
+    // Cálculo da quantidade total de memória utilizada antes da ordenação
+    size_t memoria_antes = dados->tamanho * sizeof(int);
+
+    // Chamada da função de ordenação Merge Sort
+    mergeSort(dados, 0, dados->tamanho - 1);
+
+    clock_t fim = clock(); // Fim da contagem de tempo
+
+    // Cálculo do tempo de execução
+    double tempo_execucao = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
+
+    // Cálculo da quantidade total de memória utilizada após a ordenação
+    size_t memoria_depois = dados->tamanho * sizeof(int);
+
+    // Cálculo da quantidade de memória utilizada durante a ordenação (diferença entre antes e depois)
+    size_t memoria_utilizada = memoria_depois - memoria_antes;
+
+    printf("Tempo de execucao: %.6f segundos\n", tempo_execucao);
+    printf("Quantidade de memoria utilizada: %zu bytes\n", memoria_utilizada);
+}
+
+
+
 // Fun��o para imprimir o tempo de execu��o e a quantidade de mem�ria utilizada
 void imprimirTempoETamanhoMemoria(Ordenacao *dados) {
     clock_t inicio = clock(); // In�cio da contagem de tempo

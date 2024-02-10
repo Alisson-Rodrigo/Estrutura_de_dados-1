@@ -4,26 +4,23 @@
 #include "ordenacao.c"
 
 int main() {
-    Ordenacao dados;
-    int tamanho = 1000000; // Tamanho do vetor
-    int i;
+    Ordenacao dados_quick, dados_merge;
+    int tamanho = 10000000; // Tamanho do vetor
 
-    inicializa(&dados, tamanho);
-    preencher_random(&dados);
+    inicializa(&dados_quick, tamanho);
+    inicializa(&dados_merge, tamanho);
 
-    clock_t inicio = clock(); // Início da contagem de tempo
+    preencher_random(&dados_quick);
+    preencher_random(&dados_merge);
 
-    // Ordena o vetor usando o algoritmo Quick Sort
-    quickSort(&dados, 0, dados.tamanho - 1);
+    printf("Tempo e memoria utilizada pelo Quick Sort:\n");
+    imprimirTempoETamanhoMemoria(&dados_quick);
 
-    clock_t fim = clock(); // Fim da contagem de tempo
-
-    double tempo_execucao = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
-    size_t memoria_utilizada = dados.tamanho * sizeof(int);
-
-    printf("Tempo de execucao: %.6f segundos\n", tempo_execucao);
-    printf("Quantidade de memoria utilizada: %zu bytes\n", memoria_utilizada);
-
+    printf("\nTempo e memoria utilizada pelo Merge Sort:\n");
+    imprimirTempoETamanhoMemoriaMergeSort(&dados_merge);
+ 
+    free(dados_quick.num);
+    free(dados_merge.num);
 
     return 0;
 }
