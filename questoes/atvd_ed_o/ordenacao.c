@@ -56,37 +56,23 @@ void selection_sort(Ordem *ordenacao){
     }
 }
 
-void insertion_sort(Ordem *ordenacao){
-    int i, key, j;
-    ordenacao->inicio = clock();
-
-    for(i = 1; i < ordenacao->tamanho; i++){
-        key = ordenacao->num[i];
-        j = i - 1;
-        while(j >= 0 && ordenacao->num[j] > key){
-            ordenacao->num[j+1] = ordenacao->num[j];
-            j = j - 1;
-            ordenacao->trocas++;
-            ordenacao->comparacoes++; 
-        }
-        ordenacao->num[j+1] = key;
-    }
-    ordenacao->fim = clock();
-}
 
 void insert(int vetor[],int tam){
-    int proximo,aux;
-    
-    for(int i = 1;i<tam ;i++){
-        proximo = i;
-        while(proximo != 0 && vetor[proximo] < vetor[proximo -1]){
-            aux = vetor[proximo];
-            vetor[proximo] =  vetor[proximo-1];
-            vetor[proximo-1] = aux;
-            proximo--;
-        
-         }
+    int i, j, aux;
+    for (i=1;i<tam;i++) {
+        aux = vetor[i];
+        j = i - 1;
+        while (j >= 0 && aux < vetor[j]) {
+            vetor[aux] = vetor[j];
+            j--;
+        }
+        vetor[j+1] = aux;
     }
+
+    for (i=0;i<tam;i++) {
+        printf ("%d ", vetor[i]);
+    }
+}
 
 
 void exibir_infos(Ordem *ordenacao, char* metodo){
