@@ -22,6 +22,7 @@ int main() {
     inserir_dados(&vetor);
 
     // Selection Sort
+
     selection_sort(&vetor);
     exibir_infos(&vetor, "Selection Sort");
 

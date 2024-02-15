@@ -32,27 +32,34 @@ void bubble_sort(Ordem *ordenacao){
 }
 
 void selection_sort(Ordem *ordenacao){
-    int i, j, min_idx;
-    ordenacao->inicio = clock();
-    for(i = 0; i < ordenacao->tamanho-1; i++){
+    int i, j, min_idx,temp;
+
+    for (i=0;i<ordenacao->tamanho;i++) {
+        printf ("%d ", ordenacao->num[i]);
+    }
+    printf("\n");
+
+    for (i=0;i<ordenacao->tamanho-1; i++) {
         min_idx = i;
-        for(j = i+1; j < ordenacao->tamanho; j++){
-            ordenacao->comparacoes++;
-            if(ordenacao->num[j] < ordenacao->num[min_idx]){
+        for (j=i+1;j<ordenacao->tamanho;j++) {
+            if (ordenacao->num[j] < ordenacao->num[i]) {
                 min_idx = j;
             }
         }
-        int temp = ordenacao->num[min_idx];
-        ordenacao->num[min_idx] = ordenacao->num[i];
-        ordenacao->num[i] = temp;
-        ordenacao->trocas++;
+        temp = ordenacao->num[i];
+        ordenacao->num[i] = ordenacao->num[min_idx];
+        ordenacao->num[min_idx] = temp;
     }
-    ordenacao->fim = clock();
+
+    for (i=0;i<ordenacao->tamanho;i++) {
+        printf ("%d ", ordenacao->num[i]);
+    }
 }
 
 void insertion_sort(Ordem *ordenacao){
     int i, key, j;
     ordenacao->inicio = clock();
+
     for(i = 1; i < ordenacao->tamanho; i++){
         key = ordenacao->num[i];
         j = i - 1;
@@ -66,6 +73,20 @@ void insertion_sort(Ordem *ordenacao){
     }
     ordenacao->fim = clock();
 }
+
+void insert(int vetor[],int tam){
+    int proximo,aux;
+    
+    for(int i = 1;i<tam ;i++){
+        proximo = i;
+        while(proximo != 0 && vetor[proximo] < vetor[proximo -1]){
+            aux = vetor[proximo];
+            vetor[proximo] =  vetor[proximo-1];
+            vetor[proximo-1] = aux;
+            proximo--;
+        
+         }
+    }
 
 
 void exibir_infos(Ordem *ordenacao, char* metodo){
