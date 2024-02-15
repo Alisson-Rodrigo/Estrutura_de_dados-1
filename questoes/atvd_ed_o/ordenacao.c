@@ -15,16 +15,20 @@ struct ordem{
 
 
 void bubble_sort(Ordem *ordenacao){
-    int i, j,temp;
-    for (i=0;i<=tamanho-1;i++) {
-        for (j=0;j<tamanho-1;j++) {
-            if (ordenacao->num[j] > ordenacao[j+1]) {
-                temp = ordenacao.num[j];
-                ordenacao.num[j] = num[j+1];
-                ordenacao.num[j+1] = temp;
+    int i, j;
+    ordenacao->inicio = clock();
+    for(i = 0; i < ordenacao->tamanho-1; i++){
+        for(j = 0; j < ordenacao->tamanho-i-1; j++){
+            ordenacao->comparacoes++;
+            if(ordenacao->num[j] > ordenacao->num[j+1]){
+                int temp = ordenacao->num[j];
+                ordenacao->num[j] = ordenacao->num[j+1];
+                ordenacao->num[j+1] = temp;
+                ordenacao->trocas++;
             }
         }
     }
+    ordenacao->fim = clock();
 }
 
 void selection_sort(Ordem *ordenacao){
