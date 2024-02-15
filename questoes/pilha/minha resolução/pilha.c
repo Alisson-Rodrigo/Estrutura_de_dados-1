@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
 #include "pilha.h"
 
 struct no {
@@ -52,7 +50,14 @@ void mostrar_pilha(Pilha* p) {
 		printf ("O valor: %.2f", t->info);
 		t = t->prox;
 	}
+}
 
-	
-
+void pilha_libera(Pilha* p){
+	No* q = p->prim;
+	while (q!=NULL) {
+		No* t = q->prox;
+		free(q);
+		q = t;
+	}
+	free(p);
 }
