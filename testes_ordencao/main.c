@@ -13,10 +13,6 @@ void insert(int vetor[],int tam){
         }
         vetor[j+1] = aux;
     }
-
-    for (i=0;i<tam;i++) {
-        printf ("%d ", vetor[i]);
-    }
 }
 
 int main () {
