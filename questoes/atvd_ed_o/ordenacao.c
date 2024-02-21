@@ -42,7 +42,7 @@ void selection_sort(Ordem *ordenacao){
     for (i=0;i<ordenacao->tamanho-1; i++) {
         min_idx = i;
         for (j=i+1;j<ordenacao->tamanho;j++) {
-            if (ordenacao->num[j] < ordenacao->num[i]) {
+            if (ordenacao->num[j] < ordenacao->num[min_idx]) {
                 min_idx = j;
             }
         }
