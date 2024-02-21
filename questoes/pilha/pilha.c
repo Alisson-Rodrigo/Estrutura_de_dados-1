@@ -29,16 +29,13 @@ void pilha_push (Pilha* p, float v){
 
 float pilha_pop (Pilha* p){
 	No* t;
-	float v;
 	if (pilha_vazia(p)) { 
 		printf("Pilha vazia.\n");
 		exit(1);
-	}
+	} 
 	t = p->prim;
-	v = t->info;
 	p->prim = t->prox;
 	free(t);
-	return v;
 }
 
 
