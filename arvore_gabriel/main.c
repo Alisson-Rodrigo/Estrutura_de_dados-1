@@ -3,8 +3,8 @@
 
 struct arvno {
     int info;
-    struct arvno esquerda;
-    struct arvno direita;
+    struct arvno *esquerda;
+    struct arvno *direita;
 };
 
 struct arvore
