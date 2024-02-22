@@ -48,7 +48,7 @@ void selection_sort(Ordem *ordenacao){
         }
         temp = ordenacao->num[i];
         ordenacao->num[i] = ordenacao->num[min_idx];
-        ordenacao->num[min_idx] = temp;
+        ordenacao->num[j] = temp;
     }
 
     for (i=0;i<ordenacao->tamanho;i++) {
